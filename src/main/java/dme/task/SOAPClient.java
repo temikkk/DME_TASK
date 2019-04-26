@@ -164,10 +164,10 @@ public class SOAPClient {
                 case 9:
                     StateInfoAgent = ResponseUL.OTVET9.getTitle();
                     break;
-                case 10:
+                case 11:
                     StateInfoAgent = ResponseUL.OTVET11.getTitle();
                     break;
-                case 11:
+                case 12:
                     StateInfoAgent = ResponseUL.OTVET12.getTitle();
                     break;
             }
