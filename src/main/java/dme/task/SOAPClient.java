@@ -12,7 +12,7 @@ public class SOAPClient {
     private String KPP = null;
     private String DATE = null;
     private String StateInfoAgent = null;
-    public int State = -1;
+    private int State = -1;
     private boolean AgentUL = false;
 
     private String namespaceURI = null;
@@ -22,18 +22,18 @@ public class SOAPClient {
     private String soapAction = null;
 
     public SOAPClient(String inn, String kpp, String date) {
-        this.INN = inn;
-        this.KPP = kpp;
-        this.DATE = date;
-        this.AgentUL = true;
+        INN = inn;
+        KPP = kpp;
+        DATE = date;
+        AgentUL = true;
         setSoapParams();
         callSoapWebService(soapUrl, soapAction);
     }
 
     public SOAPClient(String inn, String date) {
-        this.INN = inn;
-        this.DATE = date;
-        this.AgentUL = false;
+        INN = inn;
+        DATE = date;
+        AgentUL = false;
         setSoapParams();
         callSoapWebService(soapUrl, soapAction);
     }
@@ -61,7 +61,6 @@ public class SOAPClient {
         soapBodyElem1 = soapBodyElem.addChildElement("NP", namespace);
         if (KPP != null) {
             DATEname = envelope.createName("DT");
-
             KPPname = envelope.createName("KPP");
             INNname = envelope.createName("INN");
             soapBodyElem1.addAttribute(DATEname, DATE);
@@ -127,7 +126,7 @@ public class SOAPClient {
                 Node childNode = node.getFirstChild();
                 if (childNode.getNodeType() == childNode.ELEMENT_NODE) {
                     Element element = (Element) childNode;
-                    this.State = Integer.parseInt(element.getAttribute("State"));
+                    State = Integer.parseInt(element.getAttribute("State"));
                 }
             }
         }
@@ -176,7 +175,7 @@ public class SOAPClient {
     }
 
     int getState() {
-        return this.State;
+        return State;
     }
 }
 
